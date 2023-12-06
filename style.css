@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: "Klavika";
+    font-weight: 300;
+    font-display: swap;
+    src: url("/fonts/klavika-light-webfont.eot");
+    /* IE9 Compat Modes */
+    src: url("/fonts/klavika-light-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/klavika-light-webfont.woff2") format("woff2"), url("/fonts/klavika-light-webfont.woff") format("woff"), url("/fonts/klavika-light-webfont.ttf") format("truetype"), url("/fonts/klavika-light-webfont.svg#webfonttAPybYCL") format("svg");
+    /* Legacy iOS */
+}
+@font-face {
+    font-family: "Klavika";
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url("/fonts/klavika-regular-webfont.eot");
+    /* IE9 Compat Modes */
+    src: url("/fonts/klavika-regular-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/klavika-regular-webfont.woff2") format("woff2"), url("/fonts/klavika-regular-webfont.woff") format("woff"), url("/fonts/klavika-regular-webfont.ttf") format("truetype"), url("/fonts/klavika-regular-webfont.svg#webfontXNPpGbOu") format("svg");
+    /* Legacy iOS */
+}
+@font-face {
+    font-family: "Klavika";
+    font-weight: 500;
+    font-display: swap;
+    src: url("/fonts/klavika-medium-webfont.eot");
+    /* IE9 Compat Modes */
+    src: url("/fonts/klavika-medium-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/klavika-medium-webfont.woff2") format("woff2"), url("/fonts/klavika-medium-webfont.woff") format("woff"), url("/fonts/klavika-medium-webfont.ttf") format("truetype"), url("/fonts/klavika-medium-webfont.svg#webfonttAPybYCL") format("svg");
+    /* Legacy iOS */
+}
+@font-face {
+    font-family: "Klavika";
+    font-weight: 600;
+    font-display: swap;
+    src: url("/fonts/klavika-bold-webfont.eot");
+    /* IE9 Compat Modes */
+    src: url("/fonts/klavika-bold-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/klavika-bold-webfont.woff2") format("woff2"), url("/fonts/klavika-bold-webfont.woff") format("woff"), url("/fonts/klavika-bold-webfont.ttf") format("truetype"), url("/fonts/klavika-bold-webfont.svg#webfontlHZXgLzL") format("svg");
+    /* Legacy iOS */
+}
+
+:root {
+  font-family: Klavika, Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --image-size: 30px;
+    overflow: hidden;
+}
+
+body {
+  min-height: 100vh;
+}
+
+
+canvas {
+    max-width: 100%;
+    margin: 50px auto;
+    transition: 220ms ease;
+}
+
+canvas:active {
+    transform: scale(95%);
+}
+
+.animated-el {
+    display: block;
+    position: absolute;
+    pointer-events: none;
+    opacity: 1;
+    color: var(--color-background);
+}
+
+.click-animation {
+    font-size: 2rem;
+}
+
+.gravity-animation img {
+    width: var(--image-size);
+    height: var(--image-size);
+    object-fit: cover;
+}
+
+.flyng-gift {
+    width: 52px;
+    height: 52px;
+}
