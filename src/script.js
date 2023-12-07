@@ -32,6 +32,8 @@ export class ClickGame {
     this.depressurissation = 0.1
     this.pointsPerClick = this.winScore / 10
     this.endTime = 0
+    this.soundOn = true
+    this.sound = new Audio('./sounds/christmas-rock.mp3')
 
     this.acceleration = 0.2
 
