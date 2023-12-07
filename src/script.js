@@ -46,11 +46,6 @@ export class ClickGame {
     // the container element
     this.container = containerClass
 
-    // the canvas
-    this.canvas = canvas
-    this.width = this.canvas.width / 2
-    this.height = this.canvas.height / 2
-
     // game elements and controls
     this.message = message
     this.scoreElement = scoreElement
@@ -92,7 +87,6 @@ export class ClickGame {
      * Audio control
      */
     this.soundButton.addEventListener('click', this.controlAudio.bind(this))
-    this.soundButton.click()
 
     document.body.addEventListener('click', this.userInteractionHandler)
     document.body.addEventListener('touchstart', this.userInteractionHandler)
