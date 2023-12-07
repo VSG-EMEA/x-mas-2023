@@ -73,20 +73,22 @@ export class ClickGame {
     this.resetButton.addEventListener('click', this.reset.bind(this))
 
     this.soundButton.addEventListener('click', this.controlAudio.bind(this))
-    this.sound.play()
+    this.soundButton.click()
 
     this.canvas.addEventListener('click', this.clickHandler.bind(this), false)
 
     this.interval = setInterval(this.game.bind(this), this.difficulty)
   }
 
-  controlAudio () {
-    if (this.soundOn) {
+  async controlAudio (enabled = false) {
+    if (this.soundOn && !enabled) {
       this.soundOn = false
+      this.soundButton.classList.add('sound-off')
       this.sound.pause()
     } else {
+      this.soundButton.classList.remove('sound-off')
       this.soundOn = true
-      this.sound.play()
+      await this.sound.play()
     }
   }
 
