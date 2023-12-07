@@ -2,7 +2,18 @@
 export default {
   content: ['./**/*.{html,js}'],
   theme: {
-    extend: {
+    extend: {},
+    fontSize: {
+      sm: '0.8rem',
+      base: '1rem',
+      xl: '1.25rem',
+      '2xl': '1.563rem',
+      '3xl': '1.953rem',
+      '4xl': '3rem',
+      '5xl': '4rem',
+      '6xl': ['5rem', '1'],
+      '7xl': ['6rem', '1'],
+      '8xl': ['8rem', '1']
     },
     colors: {
       transparent: 'transparent',

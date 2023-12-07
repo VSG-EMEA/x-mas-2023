@@ -51,21 +51,6 @@
     overflow: hidden;
 }
 
-body {
-  min-height: 100vh;
-}
-
-
-canvas {
-    max-width: 100%;
-    margin: 50px auto;
-    transition: 220ms ease;
-}
-
-canvas:active {
-    transform: scale(95%);
-}
-
 .animated-el {
     display: block;
     position: absolute;
@@ -82,6 +67,13 @@ canvas:active {
     width: var(--image-size);
     height: var(--image-size);
     object-fit: cover;
+}
+
+#powerbar,
+#powerbar-shadow {
+    height: 100%;
+    background: url('./img/powerbar.svg') no-repeat bottom center;
+    background-size: 86%;
 }
 
 .flyng-gift {
