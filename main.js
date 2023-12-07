@@ -5,13 +5,7 @@ import { ClickGame } from './src/script.js'
 const app = document.querySelector('#app')
 
 app.innerHTML = `
-<div class="relative bg-[url('/img/background.jpg')] text-white w-screen h-screen flex flex-col justify-center items-center">
-    <!-- This heading is hidden in landscape mode and only be shown in protrait mode -->
-     <div class="portrait-overlay landscape:opacity-0 portrait:opacity-100 transition-opacity bg-black h-screen w-screen m-8 shadow rounded flex flex-col align-left justify-center px-12 absolute z-10">
-        <img src="/img/sound.svg" alt="" class="h-24 w-24 left-0 top-0">
-        <h1 class="text-6xl text-white">Portrait mode</h1>
-        <p>Please rotate your device to landscape mode</p>
-     </div>
+<div class="relative lg:bg-[url('/img/background.jpg')] bg-[url('/img/background-mobile.jpg')] text-white w-screen h-screen flex flex-col justify-center items-center">
     
       <div id="headline" class="absolute top-10 left-10 flex flex-col gap-0 w-1/3">
           <h4 class="text-white text-2xl uppercase leading-compact font-regular">Blitz Series</h4>
