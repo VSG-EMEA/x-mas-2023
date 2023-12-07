@@ -99,6 +99,16 @@ export class ClickGame {
     }
   }
 
+  vibratePhone () {
+    // Check if the vibration API is supported
+    if ('vibrate' in navigator) {
+      // Vibrate for 100 milliseconds (0.1 second)
+      navigator.vibrate(100)
+    } else {
+      console.log('Vibration API not supported')
+    }
+  }
+
   setDifficulty () {
     this.difficulty = Number(this.difficultyRange.value)
     clearInterval(this.interval)
@@ -284,6 +294,9 @@ export class ClickGame {
     this.isGameActive = false // Pause the game
     this.endTime = new Date().getTime()
     const timeElapsed = (this.endTime - this.startTime) / 1000 // Convert to seconds
+
+    // use the vibration API to vibrate the phone for 0.1 seconds if supported
+    this.vibratePhone()
 
     const timeFactor = 1000 / timeElapsed // Adjust as needed
     const clickFactor = 1000 * this.click // Adjust as needed
