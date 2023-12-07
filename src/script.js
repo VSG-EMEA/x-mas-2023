@@ -52,6 +52,7 @@ export class ClickGame {
     this.message = message
     this.heading = heading
     this.scoreElement = scoreElement
+    this.soundButton = soundButton
     this.difficultyRange = difficultySlider
     this.scoreRange = scoreSizeSlider
     this.resetButton = resetButton
@@ -101,9 +102,13 @@ export class ClickGame {
     this.reset()
   }
 
+  roundToTwo (num) {
+    return Math.round(num * 100) / 100
+  }
+
   drawScore () {
-    this.scoreElement.textContent = this.score
-    this.message.textContent = `score: ${this.score} - click: ${this.click}`
+    this.scoreElement.textContent = this.roundToTwo(this.score)
+    this.message.textContent = ''
   }
 
   reset () {
@@ -216,7 +221,7 @@ export class ClickGame {
   }
 
   setScore (value) {
-    const valuePercentile = Math.round(value / this.win * 100)
+    const valuePercentile = Math.round(value / this.winScore * 100)
     root.style.setProperty('--game-value', valuePercentile + '%')
     root.style.setProperty('--game-shift', valuePercentile)
   }
@@ -259,7 +264,7 @@ export class ClickGame {
     const overallScore = Math.floor((timeFactor + clickFactor + difficultyFactor + scoreValueFactor) / 4)
 
     this.message.textContent = `YOU WIN 🎉!\nScore: ${overallScore}`
-    this.scoreElement.textContent = 'WIN 60'
+    this.scoreElement.textContent = 'WIN ' + this.winScore
     this.heading.textContent = `Time: ${timeElapsed.toFixed(2)}s - Clicks: ${this.click}`
   }
 
@@ -271,21 +276,21 @@ export class ClickGame {
   game () {
     if (this.isGameActive) {
       if (this.score === 0) {
-        this.message.textContent = 'tap the screen to start'
+        this.message.innerHTML = 'Click the Pit Lift to<br/><b>START</b>'
         this.scoreElement.textContent = '0'
-        this.heading.textContent = `difficulty: ${this.difficulty} - ppc: ${this.pointsPerClick}`
+        this.heading.innerHTML = `difficulty: ${this.difficulty} - ppc: ${this.pointsPerClick}`
       } else {
         this.drawScore()
       }
     }
 
-    if (this.score >= this.win) {
+    if (this.score >= this.winScore) {
       if (this.isGameActive) {
         this.winnerWinner()
       } else {
         return true
       }
-    } else if (this.score === 0) {
+    } else if (this.score <= 0) {
       this.score = 0
       this.startTime = new Date().getTime()
     } else {
