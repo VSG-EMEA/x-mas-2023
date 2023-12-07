@@ -40,7 +40,6 @@ export class ClickGame {
 
     this.acceleration = 0.2
 
-    this.hasGameBeenReset = false
     this.isGameActive = true
     this.floorPos = window.innerHeight
 
@@ -256,7 +255,6 @@ export class ClickGame {
       // If the game is not active, reset and start a new game
       this.reset()
       this.startTime = new Date().getTime()
-      this.hasGameBeenReset = true
       this.isGameActive = true
     } else {
       if (this.score !== this.winScore && this.isGameActive) {
