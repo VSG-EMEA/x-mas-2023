@@ -29,9 +29,9 @@ app.innerHTML = `
       
     
     <div id="game-item" class="absolute top-0 left-0 w-screen h-screen">
-        <img id="game-background" src="/img/portal-01.png.webp" alt="" class="absolute top-0 left-0 w-full h-full object-cover" /> 
-        <img id="game-lift" src="/img/portal-02.png.webp" alt="" class="absolute top-0 left-0 w-full h-full object-cover" style="transform: translateY( calc(  var( --game-shift ) * -0.16vh  ) " />  
-        <img id="game-front" src="/img/portal-03.png.webp" alt="" class="absolute top-0 left-0 w-full h-full object-cover" /> 
+        <img id="game-background" src="img/portal-01.png.webp" alt="" class="absolute top-0 left-0 w-full h-full object-cover" /> 
+        <img id="game-lift" src="img/portal-02.png.webp" alt="" class="absolute top-0 left-0 w-full h-full object-cover" style="transform: translateY( calc(  var( --game-shift ) * -0.16vh  ) " />  
+        <img id="game-front" src="img/portal-03.png.webp" alt="" class="absolute top-0 left-0 w-full h-full object-cover" /> 
     </div>
     
     <div id="game-powerbar" class="absolute flex align-bottom justify-center left-10 w-[80px] h-1/2 box-content bg-black bg-opacity-50 rounded-full border border-white overflow-hidden shadow shadow-black">
@@ -47,7 +47,7 @@ app.innerHTML = `
       <div id="action-buttons" class="absolute bottom-10 left-10 flex gap-4 items-center flex-start">
         
         <button id="sound" class="bg-white bg-opacity-20 hover:bg-opacity-30 border border-white border-1-solid text-white font-medium text-2xl uppercase h-16 px-4">
-            <img src="/img/sound.svg" class="h-8">
+            <img src="img/sound.svg" class="h-8">
         </button>
         
         <button id="reset" class="bg-white bg-opacity-20 hover:bg-opacity-30 border border-white border-1-solid text-white font-regular text-2xl uppercase h-16 px-4">
@@ -64,11 +64,12 @@ app.innerHTML = `
       </div>
         
       <div id="logo" class="absolute bottom-10 right-10">
-        <img src="/img/logo.png.webp" alt="" class="w-36 float-right">
+        <img src="img/logo.png.webp" alt="" class="w-36 float-right">
       </div>
   </div>
 </div>
 `
+
 new ClickGame({
   app,
   canvas: document.getElementById('game-item'),

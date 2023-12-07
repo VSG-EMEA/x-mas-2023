@@ -96,6 +96,6 @@
 #powerbar,
 #powerbar-shadow {
     height: 100%;
-    background: url('./img/powerbar.svg') no-repeat bottom center;
+    background: url('/img/powerbar.svg') no-repeat bottom center;
     background-size: 86%;
 }
