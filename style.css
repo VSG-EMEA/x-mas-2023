@@ -51,6 +51,17 @@
     overflow: hidden;
 }
 
+@media (orientation: landscape) {
+    .portrait-overlay {
+        pointer-events:none;
+    }
+}
+
+#current-score span {
+    font-variant-numeric: tabular-nums;
+}
+
+/* The UP animation */
 .animated-el {
     display: block;
     position: absolute;
@@ -59,24 +70,32 @@
     color: var(--color-background);
 }
 
+/** When the button is off */
+.sound-off {
+    opacity: .5;
+}
+
+/* the red circle near the clicked point */
 .click-animation {
     font-size: 2rem;
 }
 
+/* the gift */
 .gravity-animation img {
     width: var(--image-size);
     height: var(--image-size);
     object-fit: cover;
 }
 
+.flyng-gift {
+    width: 52px;
+    height: 52px;
+}
+
+/* the powerbar on the left side */
 #powerbar,
 #powerbar-shadow {
     height: 100%;
     background: url('./img/powerbar.svg') no-repeat bottom center;
     background-size: 86%;
-}
-
-.flyng-gift {
-    width: 52px;
-    height: 52px;
 }
