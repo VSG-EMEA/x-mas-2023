@@ -5,7 +5,7 @@ import { ClickGame } from './src/script.js'
 const app = document.querySelector('#app')
 
 app.innerHTML = `
-<div class="relative lg:bg-[url('/img/background.jpg')] bg-[url('/img/background-mobile.jpg')] text-white w-screen h-screen flex flex-col justify-center items-center">
+<div class="game-wrapper relative text-white w-screen h-screen flex flex-col justify-center items-center">
     
       <div id="headline" class="absolute top-10 left-10 flex flex-col gap-0 w-1/3">
           <h4 class="text-white text-2xl uppercase leading-compact font-regular">Blitz Series</h4>
@@ -27,12 +27,12 @@ app.innerHTML = `
         <img id="game-lift" src="img/portal-02.png.webp" alt="" class="absolute top-0 left-0 w-full h-full object-cover" style="transform: translateY( calc(  var( --game-shift ) * -0.16vh  ) " />  
         <img id="game-front" src="img/portal-03.png.webp" alt="" class="absolute top-0 left-0 w-full h-full object-cover" /> 
     </div>
-    
-    <div id="game-powerbar" class="absolute flex align-bottom justify-center left-10 w-[80px] h-1/2 box-content bg-black bg-opacity-50 rounded-full border border-white overflow-hidden shadow shadow-black">
-        <div id="powerbar-wrapper" class="w-full relative">
-          <div id="powerbar-shadow" class="absolute top-0 bottom-0 left-0 w-full h-1/2 opacity-30"></div>
-          <div id="powerbar-crop" class="absolute bottom-0.5 left-0 w-full h-1/2 overflow-hidden" style="height: var(--game-value) !important;">
-            <div id="powerbar" class="absolute top-0 bottom-0 left-0 h-1/2 w-full"></div>
+
+    <div id="game-powerbar" class="absolute left-10 md:bottom-inherit bottom-36 box-content bg-black bg-opacity-50 px-3 py-8 rounded-full border border-white overflow-hidden shadow-black shadow-xl">
+        <div id="powerbar-wrapper" class="relative">
+          <div id="powerbar-shadow" class="opacity-30"></div>
+          <div id="powerbar-crop" class="absolute bottom-0 left-0 w-full overflow-hidden" style="height: var(--game-value) !important;">
+            <div id="powerbar" class="absolute bottom-0 left-0"></div>
           </div>
         </div>
     </div>
