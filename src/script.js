@@ -66,9 +66,22 @@ export class ClickGame {
     this.scoreRange.addEventListener('change', this.setPointsPerClick.bind(this), false)
     this.resetButton.addEventListener('click', this.reset.bind(this))
 
+    this.soundButton.addEventListener('click', this.controlAudio.bind(this))
+    this.sound.play()
+
     this.canvas.addEventListener('click', this.clickHandler.bind(this), false)
 
     this.interval = setInterval(this.game.bind(this), this.difficulty)
+  }
+
+  controlAudio () {
+    if (this.soundOn) {
+      this.soundOn = false
+      this.sound.pause()
+    } else {
+      this.soundOn = true
+      this.sound.play()
+    }
   }
 
   setDifficulty () {
