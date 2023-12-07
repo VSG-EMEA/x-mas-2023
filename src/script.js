@@ -177,6 +177,7 @@ export class ClickGame {
 
     const initialSpeed = Math.random() * 20 + 2 // Random speed between 2 and 7
     const initialAngle = Math.random() * -1 * Math.PI // Random angle in radians
+    const initialSpin = Math.random() * -1 * Math.PI // Random angle in radians
 
     const velocityX = initialSpeed * Math.cos(initialAngle)
     let velocityY = initialSpeed * Math.sin(initialAngle)
@@ -184,18 +185,22 @@ export class ClickGame {
     let positionX = clickX - fallingObject.width / 2
     let positionY = clickY - fallingObject.height / 2
 
+    let spin = initialSpin
+
     fallingObject.style.left = positionX + 'px'
     fallingObject.style.top = positionY + 'px'
 
     const animate = () => {
       positionX += velocityX
       positionY += velocityY
+      spin += initialSpin
       velocityY += this.acceleration
       velocityY += this.acceleration
 
       if (positionY > this.floorPos) {
         fallingObject.remove()
       } else {
+        fallingObject.style.transform = 'rotate(' + spin + 'deg)'
         fallingObject.style.left = positionX + 'px'
         fallingObject.style.top = positionY + 'px'
         requestAnimationFrame(animate)
