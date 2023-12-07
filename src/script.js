@@ -47,6 +47,7 @@ export class ClickGame {
     this.container = containerClass
 
     // game elements and controls
+    this.canvas = canvas
     this.message = message
     this.scoreElement = scoreElement
     this.soundButton = soundButton
@@ -78,6 +79,11 @@ export class ClickGame {
     this.resetButton.addEventListener('click', this.reset.bind(this))
 
     /**
+     * the main click event handler
+     */
+    this.canvas.addEventListener('click', this.clickHandler.bind(this), false)
+
+    /**
      * The game loop.
      * @type {number}
      */
@@ -90,7 +96,6 @@ export class ClickGame {
 
     document.body.addEventListener('click', this.userInteractionHandler)
     document.body.addEventListener('touchstart', this.userInteractionHandler)
-    document.body.addEventListener('keydown', this.userInteractionHandler)
   }
 
   // Add user interaction listener
@@ -98,14 +103,12 @@ export class ClickGame {
     await this.startAudio(true)
     document.body.removeEventListener('click', this.userInteractionHandler)
     document.body.removeEventListener('touchstart', this.userInteractionHandler)
-    document.body.removeEventListener('keydown', this.userInteractionHandler)
   }
 
   /**
    * Controls the audio playback.
    *
    * @async
-   * @param {boolean} forceEnabled - Whether to force enabling the sound even if it is currently disabled.
    * @return {Promise<void>} - A Promise that resolves when the audio playback is controlled.
    */
   controlAudio () {
@@ -121,6 +124,13 @@ export class ClickGame {
     this.soundOn = !this.soundOn
   }
 
+  /**
+   * Starts the audio by playing the sound and then removes the
+   * 'sound-off' class from the sound button.
+   *
+   * This function does not accept any parameters and does not
+   * return any value.
+   */
   startAudio () {
     this.sound.play().then(() => {
       this.soundButton.classList.remove('sound-off')
@@ -160,15 +170,32 @@ export class ClickGame {
     this.reset()
   }
 
+  /**
+   * Sets the points per click based on the current score range
+   * and then resets the state.
+   *
+   * This function does not take any parameters or return any value.
+   */
   setPointsPerClick () {
     this.pointsPerClick = Number(this.scoreRange.value)
     this.reset()
   }
 
+  /**
+   * Returns the given number rounded to two decimal places.
+   *
+   * @param {number} num - The number to round.
+   * @return {number} - The rounded number.
+   */
   roundToTwo (num) {
     return Math.round(num * 100) / 100
   }
 
+  /**
+   * Resets the game state and updates the UI elements.
+   *
+   * @return {void}
+   */
   reset () {
     this.click = 0
     this.message.innerHTML = 'Click the Pit Lift to<br/><b>START</b>'
@@ -179,6 +206,12 @@ export class ClickGame {
     }
   }
 
+  /**
+   * Handles the animation for a plus one interaction.
+   *
+   * @param {number} clickX - The x-coordinate of the click.
+   * @param {number} clickY - The y-coordinate of the click.
+   */
   handlePlusOneAnimation (clickX, clickY) {
     // Added properties for animation
     const pointAnimation = document.createElement('img')
