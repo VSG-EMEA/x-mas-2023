@@ -75,10 +75,22 @@ export class ClickGame {
       window.scrollTo(0, 1)
     }, 0)
 
+    /**
+     * Game reset, difficulty and score settings
+     */
     this.difficultyRange.addEventListener('change', this.setDifficulty.bind(this), false)
     this.scoreRange.addEventListener('change', this.setPointsPerClick.bind(this), false)
     this.resetButton.addEventListener('click', this.reset.bind(this))
 
+    /**
+     * The game loop.
+     * @type {number}
+     */
+    this.interval = setInterval(this.game.bind(this), this.difficulty)
+
+    /**
+     * Audio control
+     */
     this.soundButton.addEventListener('click', this.controlAudio.bind(this))
     this.soundButton.click()
 
@@ -88,17 +100,39 @@ export class ClickGame {
   }
 
   async controlAudio (enabled = false) {
+
+  /**
+   * Controls the audio playback.
+   *
+   * @async
+   * @param {boolean} forceEnabled - Whether to force enabling the sound even if it is currently disabled.
+   * @return {Promise<void>} - A Promise that resolves when the audio playback is controlled.
+   */
+  controlAudio () {
     if (this.soundOn) {
-      this.soundOn = false
-      this.soundButton.classList.add('sound-off')
-      this.sound.pause()
+      this.sound.play().then(() => {
+        this.soundButton.classList.remove('sound-off')
+      })
     } else {
-      this.soundButton.classList.remove('sound-off')
-      this.soundOn = true
-      await this.sound.play()
+      this.sound.pause()
+      this.soundButton.classList.add('sound-off')
     }
+
+    this.soundOn = !this.soundOn
   }
 
+  startAudio () {
+    this.sound.play().then(() => {
+      this.soundButton.classList.remove('sound-off')
+    })
+  }
+
+  /**
+   * Vibrates the phone for a specified duration.
+   * If the vibration API is not supported, it logs a message to the console.
+   *
+   * @return {void}
+   */
   vibratePhone () {
     // Check if the vibration API is supported
     if ('vibrate' in navigator) {
@@ -109,6 +143,16 @@ export class ClickGame {
     }
   }
 
+  /**
+   * Sets the difficulty of the game.
+   *
+   * The difficulty is set based on the value of `difficultyRange` property.
+   * It assigns the value as a number to the `difficulty` property.
+   * It then clears the existing interval and creates a new interval for the game loop
+   * with the new difficulty value. Finally, it resets the game.
+   *
+   * @return {void}
+   */
   setDifficulty () {
     this.difficulty = Number(this.difficultyRange.value)
     clearInterval(this.interval)
@@ -186,6 +230,10 @@ export class ClickGame {
     })
   }
 
+  /**
+   * Checks if a new game can be started based on the time elapsed since the last game ended.
+   * @returns {boolean} Returns true if enough time has passed since the last game ended, otherwise false.
+   */
   canStartNewGame () {
     const currentTime = new Date().getTime()
     const timeSinceWin = (currentTime - this.endTime) / 1000
@@ -193,11 +241,22 @@ export class ClickGame {
     return timeSinceWin >= 5
   }
 
-  // Fast Easing function
+  /**
+   * Calculates the ease out value based on the input time.
+   *
+   * @param {number} t - The time value between 0 and 1.
+   * @returns {number} - The calculated ease out value.
+   */
   easeOut (t) {
     return t * (2 - t)
   }
 
+  /**
+   * Handles the gravity animation of a falling object.
+   *
+   * @param {number} clickX - The x-coordinate of the click position.
+   * @param {number} clickY - The y-coordinate of the click position.
+   */
   handleGravityAnimation (clickX, clickY) {
     const fallingObject = document.createElement('img')
     fallingObject.src = 'img/gift.png.webp'
@@ -220,6 +279,10 @@ export class ClickGame {
     fallingObject.style.left = positionX + 'px'
     fallingObject.style.top = positionY + 'px'
 
+    /**
+     * Function to animate a falling object on the screen.
+     * @function animate
+     */
     const animate = () => {
       positionX += velocityX
       positionY += velocityY
@@ -240,6 +303,15 @@ export class ClickGame {
     animate()
   }
 
+  /**
+   * Updates and displays the score on the screen using easing.
+   * The score is updated every 100 milliseconds.
+   *
+   * @method drawScore
+   * @memberof ClickGame
+   *
+   * @return {void} This method does not return a value.
+   */
   drawScore () {
     const currentTime = new Date().getTime()
     const timeSinceLastUpdate = currentTime - this.easedUpdateTime
@@ -256,6 +328,12 @@ export class ClickGame {
     this.scoreElement.textContent = this.roundToTwo(this.scoreEased).toFixed(2).padStart(5, '0') + ' TON' ?? '0 TON'
   }
 
+  /**
+   * Sets the score value and updates the game display.
+   *
+   * @param {number} value - The value of the score to set.
+   * @return {void}
+   */
   setScore (value) {
     const valuePercentile = Math.round(value / this.winScore * 100)
     const easedValuePercentile = this.easeOut(valuePercentile / 100) // Apply easing
@@ -265,6 +343,12 @@ export class ClickGame {
     root.style.setProperty('--game-shift', easedValuePercentile * 100)
   }
 
+  /**
+   * Handles the click event for the game.
+   *
+   * @param {MouseEvent} e - The click event object.
+   * @returns {void}
+   */
   clickHandler (e) {
     if (!this.isGameActive && this.canStartNewGame()) {
       // If the game is not active, reset and start a new game
@@ -290,7 +374,13 @@ export class ClickGame {
     }
   }
 
-  winnerWinner () {
+  /**
+   * Pauses the game, calculates the overall score, and updates the score and message elements.
+   * Uses the vibration API to vibrate the phone for 0.1 seconds if supported.
+   *
+   * @returns {void}
+   */
+  winner () {
     this.isGameActive = false // Pause the game
     this.endTime = new Date().getTime()
     const timeElapsed = (this.endTime - this.startTime) / 1000 // Convert to seconds
@@ -323,7 +413,7 @@ export class ClickGame {
 
     if (this.score >= this.winScore) {
       if (this.isGameActive) {
-        this.winnerWinner()
+        this.winner()
       } else {
         return true
       }
