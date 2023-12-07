@@ -88,7 +88,7 @@ export class ClickGame {
   }
 
   async controlAudio (enabled = false) {
-    if (this.soundOn && !enabled) {
+    if (this.soundOn) {
       this.soundOn = false
       this.soundButton.classList.add('sound-off')
       this.sound.pause()
@@ -128,7 +128,7 @@ export class ClickGame {
   reset () {
     this.click = 0
     this.message.innerHTML = 'Click the Pit Lift to<br/><b>START</b>'
-    this.scoreElement.textContent = '0'
+    this.scoreElement.textContent = '0 TON'
     this.score = 0
     if (this.canStartNewGame()) {
       this.isGameActive = true
@@ -253,7 +253,7 @@ export class ClickGame {
       this.scoreEased += (this.score - this.scoreEased) * easingFactor
     }
 
-    this.scoreElement.textContent = this.roundToTwo(this.scoreEased).toFixed(2).padStart(5, '0') ?? 0
+    this.scoreElement.textContent = this.roundToTwo(this.scoreEased).toFixed(2).padStart(5, '0') + ' TON' ?? '0 TON'
   }
 
   setScore (value) {
@@ -305,7 +305,7 @@ export class ClickGame {
 
     const overallScore = Math.floor((timeFactor + clickFactor + difficultyFactor + scoreValueFactor) / 4)
 
-    this.scoreElement.textContent = 'WIN! ' + this.winScore
+    this.scoreElement.textContent = this.winScore + ' TON - WIN!'
     this.message.innerHTML = `<b>Score:</b> ${overallScore}`
   }
 
