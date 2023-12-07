@@ -70,6 +70,11 @@ export class ClickGame {
    * @function init - Initializes the game.
    */
   init () {
+    setTimeout(function () {
+      // Hide the address bar:
+      window.scrollTo(0, 1)
+    }, 0)
+
     this.difficultyRange.addEventListener('change', this.setDifficulty.bind(this), false)
     this.scoreRange.addEventListener('change', this.setPointsPerClick.bind(this), false)
     this.resetButton.addEventListener('click', this.reset.bind(this))
