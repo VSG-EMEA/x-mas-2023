@@ -27,6 +27,8 @@ export class ClickGame {
 
     this.click = 0
     this.score = 0
+    this.scoreEased = 0
+    this.easedUpdateTime = 0
     this.winScore = 60
     this.difficulty = 5
     this.depressurissation = 0.1
@@ -180,6 +182,11 @@ export class ClickGame {
     return timeSinceWin >= 5
   }
 
+  // Fast Easing function
+  easeOut (t) {
+    return t * (2 - t)
+  }
+
   handleGravityAnimation (clickX, clickY) {
     const fallingObject = document.createElement('img')
     fallingObject.src = 'img/gift.png.webp'
@@ -220,6 +227,22 @@ export class ClickGame {
     }
 
     animate()
+  }
+
+  drawScore () {
+    const currentTime = new Date().getTime()
+    const timeSinceLastUpdate = currentTime - this.easedUpdateTime
+
+    // Update the eased score every 100 milliseconds
+    if (timeSinceLastUpdate > 20) {
+      this.easedUpdateTime = currentTime
+      const easingFactor = 0.2
+
+      // Apply easing to smoothly update the eased score
+      this.scoreEased += (this.score - this.scoreEased) * easingFactor
+    }
+
+    this.scoreElement.textContent = this.roundToTwo(this.scoreEased).toFixed(2).padStart(5, '0') ?? 0
   }
 
   setScore (value) {
