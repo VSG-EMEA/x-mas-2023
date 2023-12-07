@@ -36,7 +36,7 @@ X-MAS-2023 is a simple browser-based game where the player clicks on the screen 
 
 1. Clone the repository:
 
-`git clone https://github.com/VSG-EMEA/x-mas-2023/x-mas-2023.git`
+`git clone https://github.com/VSG-EMEA/x-mas-2023.git`
 
 2. Build with
 
