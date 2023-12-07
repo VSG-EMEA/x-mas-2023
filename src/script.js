@@ -14,14 +14,13 @@ export class ClickGame {
    * @param {HTMLElement} args.app - The game container element.
    * @param {HTMLElement} args.canvas - The canvas element.
    * @param {HTMLElement} args.message - The message element.
-   * @param {HTMLElement} args.heading - The heading element.
    * @param {HTMLElement} args.soundButton - The Sound on / off element.
    * @param {HTMLElement} args.scoreElement - The scoreboard element.
    * @param {HTMLElement} args.difficultySlider - The difficulty slider element.
    * @param {HTMLElement} args.scoreSizeSlider - The score slider element.
    * @param {HTMLElement} args.resetButton - The reset button element.
    */
-  constructor ({ app: containerClass, canvas, message, heading, soundButton, scoreElement, difficultySlider, scoreSizeSlider, resetButton }) {
+  constructor ({ app: containerClass, canvas, message, soundButton, scoreElement, difficultySlider, scoreSizeSlider, resetButton }) {
     // the app vars
     this.startTime = new Date().getTime()
 
@@ -52,7 +51,6 @@ export class ClickGame {
 
     // game elements and controls
     this.message = message
-    this.heading = heading
     this.scoreElement = scoreElement
     this.soundButton = soundButton
     this.difficultyRange = difficultySlider
@@ -300,11 +298,7 @@ export class ClickGame {
    */
   game () {
     if (this.isGameActive) {
-      if (this.score === 0) {
-        this.message.innerHTML = 'Click the Pit Lift to<br/><b>START</b>'
-        this.scoreElement.textContent = '0'
-        this.heading.innerHTML = `difficulty: ${this.difficulty} - ppc: ${this.pointsPerClick}`
-      } else {
+      if (this.score !== 0) {
         this.drawScore()
       }
     }
@@ -319,6 +313,7 @@ export class ClickGame {
       this.score = 0
       this.startTime = new Date().getTime()
     } else {
+      this.message.innerHTML = ''
       this.score -= this.depressurissation
       this.setScore(this.score)
     }
