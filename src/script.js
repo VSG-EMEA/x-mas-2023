@@ -14,20 +14,23 @@ export class ClickGame {
    * @param {HTMLElement} args.app - The game container element.
    * @param {HTMLElement} args.canvas - The canvas element.
    * @param {HTMLElement} args.message - The message element.
+   * @param {HTMLElement} args.heading - The heading element.
+   * @param {HTMLElement} args.soundButton - The Sound on / off element.
    * @param {HTMLElement} args.scoreElement - The scoreboard element.
    * @param {HTMLElement} args.difficultySlider - The difficulty slider element.
    * @param {HTMLElement} args.scoreSizeSlider - The score slider element.
    * @param {HTMLElement} args.resetButton - The reset button element.
    */
-  constructor ({ app: containerClass, canvas, message, heading, scoreElement, difficultySlider, scoreSizeSlider, resetButton }) {
+  constructor ({ app: containerClass, canvas, message, heading, soundButton, scoreElement, difficultySlider, scoreSizeSlider, resetButton }) {
     // the app vars
     this.startTime = new Date().getTime()
 
     this.click = 0
     this.score = 0
-    this.win = 1000
+    this.winScore = 60
     this.difficulty = 5
-    this.pointsPerClick = 50
+    this.depressurissation = 0.1
+    this.pointsPerClick = this.winScore / 10
     this.endTime = 0
 
     this.acceleration = 0.2
@@ -223,7 +226,7 @@ export class ClickGame {
       this.isGameActive = true
       this.startTime = new Date().getTime()
     } else {
-      if (this.score !== this.win && this.isGameActive) {
+      if (this.score !== this.winScore && this.isGameActive) {
         this.score += this.pointsPerClick
         this.setScore(this.score)
         this.click++
@@ -284,7 +287,7 @@ export class ClickGame {
       this.score = 0
       this.startTime = new Date().getTime()
     } else {
-      this.score -= 1
+      this.score -= this.depressurissation
       this.setScore(this.score)
     }
   }
