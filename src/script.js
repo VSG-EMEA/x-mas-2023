@@ -94,12 +94,18 @@ export class ClickGame {
     this.soundButton.addEventListener('click', this.controlAudio.bind(this))
     this.soundButton.click()
 
-    this.canvas.addEventListener('click', this.clickHandler.bind(this), false)
-
-    this.interval = setInterval(this.game.bind(this), this.difficulty)
+    document.body.addEventListener('click', this.userInteractionHandler)
+    document.body.addEventListener('touchstart', this.userInteractionHandler)
+    document.body.addEventListener('keydown', this.userInteractionHandler)
   }
 
-  async controlAudio (enabled = false) {
+  // Add user interaction listener
+  userInteractionHandler = async () => {
+    await this.startAudio(true)
+    document.body.removeEventListener('click', this.userInteractionHandler)
+    document.body.removeEventListener('touchstart', this.userInteractionHandler)
+    document.body.removeEventListener('keydown', this.userInteractionHandler)
+  }
 
   /**
    * Controls the audio playback.
