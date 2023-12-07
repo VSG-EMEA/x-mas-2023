@@ -30,14 +30,17 @@ export class ClickGame {
     this.easedUpdateTime = 0
     this.winScore = 60
     this.difficulty = 5
-    this.depressurissation = 0.1
-    this.pointsPerClick = this.winScore / 10
+    this.depressurissation = 0.06
+    this.pointsPerClick = this.winScore / 20
     this.endTime = 0
-    this.soundOn = true
+
+    // sound settings
+    this.soundOn = false
     this.sound = new Audio('./sounds/christmas-rock.mp3')
 
     this.acceleration = 0.2
 
+    this.hasGameBeenReset = false
     this.isGameActive = true
     this.floorPos = window.innerHeight
 
@@ -108,17 +111,12 @@ export class ClickGame {
     return Math.round(num * 100) / 100
   }
 
-  drawScore () {
-    this.scoreElement.textContent = this.roundToTwo(this.score)
-    this.message.textContent = ''
-  }
-
   reset () {
-    this.score = 0
     this.click = 0
-    this.message.textContent = ''
+    this.message.innerHTML = 'Click the Pit Lift to<br/><b>START</b>'
     this.scoreElement.textContent = '0'
-    if (!this.isGameActive || this.canStartNewGame()) {
+    this.score = 0
+    if (this.canStartNewGame()) {
       this.isGameActive = true
     }
   }
@@ -133,6 +131,7 @@ export class ClickGame {
     pointAnimation.style.position = 'absolute'
     pointAnimation.style.left = clickX + 'px'
     pointAnimation.style.top = clickY + 'px'
+    pointAnimation.style.opacity = 0.75
     pointAnimation.style.transform = 'translate(-50%, -50%) scale(0.1)' // Change this value based on how high you want it to go
     pointAnimation.style.transition = 'transform 1.5s ease-out, opacity 1s ease-in'
 
@@ -245,16 +244,20 @@ export class ClickGame {
 
   setScore (value) {
     const valuePercentile = Math.round(value / this.winScore * 100)
-    root.style.setProperty('--game-value', valuePercentile + '%')
-    root.style.setProperty('--game-shift', valuePercentile)
+    const easedValuePercentile = this.easeOut(valuePercentile / 100) // Apply easing
+    this.scoreEased = easedValuePercentile * this.winScore
+
+    root.style.setProperty('--game-value', easedValuePercentile * 100 + '%')
+    root.style.setProperty('--game-shift', easedValuePercentile * 100)
   }
 
   clickHandler (e) {
     if (!this.isGameActive && this.canStartNewGame()) {
       // If the game is not active, reset and start a new game
       this.reset()
-      this.isGameActive = true
       this.startTime = new Date().getTime()
+      this.hasGameBeenReset = true
+      this.isGameActive = true
     } else {
       if (this.score !== this.winScore && this.isGameActive) {
         this.score += this.pointsPerClick
@@ -286,9 +289,8 @@ export class ClickGame {
 
     const overallScore = Math.floor((timeFactor + clickFactor + difficultyFactor + scoreValueFactor) / 4)
 
-    this.message.textContent = `YOU WIN 🎉!\nScore: ${overallScore}`
-    this.scoreElement.textContent = 'WIN ' + this.winScore
-    this.heading.textContent = `Time: ${timeElapsed.toFixed(2)}s - Clicks: ${this.click}`
+    this.scoreElement.textContent = 'WIN! ' + this.winScore
+    this.message.innerHTML = `<b>Score:</b> ${overallScore}`
   }
 
   /**
@@ -310,7 +312,7 @@ export class ClickGame {
         return true
       }
     } else if (this.score <= 0) {
-      this.score = 0
+      if (!this.isGameActive) this.reset()
       this.startTime = new Date().getTime()
     } else {
       this.message.innerHTML = ''
