@@ -16,9 +16,9 @@ export class ClickGame {
    * @param {HTMLElement} args.message - The message element.
    * @param {HTMLElement} args.soundButton - The Sound on / off element.
    * @param {HTMLElement} args.scoreElement - The scoreboard element.
-   * @param {HTMLElement} args.difficultySlider - The difficulty slider element.
-   * @param {HTMLElement} args.scoreSizeSlider - The score slider element.
-   * @param {HTMLElement} args.resetButton - The reset button element.
+   * @param {HTMLInputElement} args.difficultySlider - The difficulty slider element.
+   * @param {HTMLInputElement} args.scoreSizeSlider - The score slider element.
+   * @param {HTMLButtonElement} args.resetButton - The reset button element.
    */
   constructor ({ app: containerClass, canvas, message, soundButton, scoreElement, difficultySlider, scoreSizeSlider, resetButton }) {
     // the app vars
@@ -253,9 +253,10 @@ export class ClickGame {
     pointAnimation.style.position = 'absolute'
     pointAnimation.style.left = clickX + 'px'
     pointAnimation.style.top = clickY + 'px'
-    pointAnimation.style.opacity = 0.75
+    pointAnimation.style.opacity = '0.75'
     pointAnimation.style.transform = 'translate(-50%, -50%) scale(0.1)' // Change this value based on how high you want it to go
     pointAnimation.style.transition = 'transform 1.5s ease-out, opacity 1s ease-in'
+    pointAnimation.style.pointerEvents = 'none'
 
     this.container.appendChild(pointAnimation)
 
@@ -263,7 +264,7 @@ export class ClickGame {
       setTimeout(() => resolve(1), 100)
     }).then(function () {
       pointAnimation.style.transform = 'translate(-50%, -50%) scale(1)'
-      pointAnimation.style.opacity = 0
+      pointAnimation.style.opacity = '0'
       setTimeout(() => {
         pointAnimation.remove()
       }, 3000)
@@ -279,6 +280,7 @@ export class ClickGame {
     clickedAnimation.style.top = clickY + 'px'
     clickedAnimation.style.transform = 'scale(0.3) translateY(0)' // Change this value based on how high you want it to go
     clickedAnimation.style.transition = 'transform 1.5s ease-out, opacity 1s ease-in'
+    clickedAnimation.style.pointerEvents = 'none'
 
     this.container.appendChild(clickedAnimation)
 
@@ -287,7 +289,7 @@ export class ClickGame {
     }).then(function () {
       const shift = Math.round(Math.random() * 200) + 100
       clickedAnimation.style.transform = `translateY(-${shift}px) scale(2.5)`
-      clickedAnimation.style.opacity = 0
+      clickedAnimation.style.opacity = '0'
       setTimeout(() => {
         clickedAnimation.remove()
       }, 3000)
@@ -342,6 +344,7 @@ export class ClickGame {
 
     fallingObject.style.left = positionX + 'px'
     fallingObject.style.top = positionY + 'px'
+    fallingObject.style.pointerEvents = 'none'
 
     /**
      * Function to animate a falling object on the screen.
@@ -350,7 +353,7 @@ export class ClickGame {
     const animate = () => {
       positionX += velocityX
       positionY += velocityY
-      spin += initialSpin
+      spin += initialSpin * 2
       velocityY += this.acceleration
       velocityY += this.acceleration
 
@@ -365,18 +368,6 @@ export class ClickGame {
     }
 
     animate()
-  }
-
-  /**
-   * Calculates the ease out value based on the input time.
-   *
-   * @param {number} t - The time value between 0 and 1.
-   * @param {number} duration - The duration of the easing.
-   * @returns {number} - The calculated ease out value.
-   */
-  itemEaseOut (t, duration = 1) {
-    const scaledTime = t / duration;
-    return scaledTime * (2 - scaledTime)
   }
 
 
@@ -394,14 +385,17 @@ export class ClickGame {
     const timeDif = currentTime - this.easedUpdateTime;
 
     // Update the score
-    if (timeDif > 100) {
+    if (timeDif > 20) {
       this.easedUpdateTime = currentTime;
-      const maxDuration = 1000; // Adjust this value as needed
+      const maxDuration = 100;
       const percent = Math.min(timeDif / maxDuration, 1); // Clamp between 0 and 1
 
       // Use the easeOut function
       const easingAmount = this.easeOut(percent);
       this.scoreEased += (this.score - this.scoreEased) * easingAmount;
+      if (this.scoreEased < 0) {
+        this.scoreEased = 0
+      }
     }
 
     // Add padding to the score
@@ -420,8 +414,8 @@ export class ClickGame {
     const easedValuePercentile = this.easeOut(valuePercentile / 100) // Apply easing
     this.scoreEased = easedValuePercentile * this.winScore
 
-    root.style.setProperty('--game-value', easedValuePercentile * 100 + '%')
-    root.style.setProperty('--game-shift', easedValuePercentile * 100)
+    root.style.setProperty('--game-value', String(easedValuePercentile * 100) + '%')
+    root.style.setProperty('--game-shift', String(easedValuePercentile * 100) )
   }
 
   /**
