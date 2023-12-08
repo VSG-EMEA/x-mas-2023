@@ -31,7 +31,7 @@ export class ClickGame {
     this.winScore = 60
     this.difficulty = 5
     this.depressurissation = 0.06
-    this.pointsPerClick = this.winScore / 20
+    this.pointsPerClick = this.winScore / 25
     this.endTime = 0
 
     // sound settings
@@ -40,8 +40,12 @@ export class ClickGame {
 
     this.acceleration = 0.2
 
+    // Add orientation property
     this.isGameActive = true
     this.floorPos = window.innerHeight
+
+    // screen orientation
+    this.orientation = this.isMobile() ? 'portrait' : 'landscape';
 
     // the container element
     this.container = containerClass
@@ -83,6 +87,14 @@ export class ClickGame {
      */
     this.canvas.addEventListener('click', this.clickHandler.bind(this), false)
 
+
+    /**
+     * The difficulty and score settings for mobiles are different
+     */
+    if (this.isMobile()) {
+      this.pointsPerClick = this.winScore / 30
+    }
+
     /**
      * The game loop.
      * @type {number}
@@ -96,6 +108,15 @@ export class ClickGame {
 
     document.body.addEventListener('click', this.userInteractionHandler)
     document.body.addEventListener('touchstart', this.userInteractionHandler)
+
+    /**
+     * set the orientation property based on the window size
+     */
+    window.addEventListener('resize', () => {
+      // Update the orientation property when the window size changes
+      this.orientation = this.isMobile() ? 'portrait' : 'landscape';
+    });
+
   }
 
   // Add user interaction listener
@@ -179,6 +200,16 @@ export class ClickGame {
   setPointsPerClick () {
     this.pointsPerClick = Number(this.scoreRange.value)
     this.reset()
+  }
+
+
+  /**
+   * Method to check if device is mobile or in portrait mode
+   *
+   * @return {boolean} - True if device is mobile or in portrait mode, false otherwise.
+   */
+  isMobile() {
+    return window.matchMedia("(max-width: 768px)").matches || window.innerHeight > window.innerWidth;
   }
 
   /**
