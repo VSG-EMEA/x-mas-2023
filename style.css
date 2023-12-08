@@ -74,7 +74,6 @@
 .animated-el {
     display: block;
     position: absolute;
-    pointer-events: none;
     opacity: 1;
     color: var(--color-background);
 }
@@ -114,7 +113,7 @@
 @media (orientation: portrait) {
     #powerbar,
     #powerbar-shadow {
-        height: 350px;
-        width: 25px;
+        height: 320px;
+        width: 20px;
     }
 }
