@@ -2,46 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-    font-family: "Klavika";
+@font-face{
+    font-family: 'Work Sans';
     font-weight: 300;
+    font-stretch: normal;
     font-display: swap;
-    src: url("/fonts/klavika-light-webfont.eot");
-    /* IE9 Compat Modes */
-    src: url("/fonts/klavika-light-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/klavika-light-webfont.woff2") format("woff2"), url("/fonts/klavika-light-webfont.woff") format("woff"), url("/fonts/klavika-light-webfont.ttf") format("truetype"), url("/fonts/klavika-light-webfont.svg#webfonttAPybYCL") format("svg");
-    /* Legacy iOS */
+    src: url('/fonts/work-sans-v16-latin-300.woff2') format('woff2');
 }
-@font-face {
-    font-family: "Klavika";
+
+@font-face{
+    font-family: 'Work Sans';
     font-weight: 400;
-    font-style: normal;
+    font-stretch: normal;
     font-display: swap;
-    src: url("/fonts/klavika-regular-webfont.eot");
-    /* IE9 Compat Modes */
-    src: url("/fonts/klavika-regular-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/klavika-regular-webfont.woff2") format("woff2"), url("/fonts/klavika-regular-webfont.woff") format("woff"), url("/fonts/klavika-regular-webfont.ttf") format("truetype"), url("/fonts/klavika-regular-webfont.svg#webfontXNPpGbOu") format("svg");
-    /* Legacy iOS */
+    src: url('/fonts/work-sans-v16-latin-regular.woff2') format('woff2');
 }
-@font-face {
-    font-family: "Klavika";
+
+@font-face{
+    font-family: 'Work Sans';
     font-weight: 500;
+    font-stretch: normal;
     font-display: swap;
-    src: url("/fonts/klavika-medium-webfont.eot");
-    /* IE9 Compat Modes */
-    src: url("/fonts/klavika-medium-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/klavika-medium-webfont.woff2") format("woff2"), url("/fonts/klavika-medium-webfont.woff") format("woff"), url("/fonts/klavika-medium-webfont.ttf") format("truetype"), url("/fonts/klavika-medium-webfont.svg#webfonttAPybYCL") format("svg");
-    /* Legacy iOS */
+    src: url('/fonts/work-sans-v16-latin-500.woff2') format('woff2');
 }
-@font-face {
-    font-family: "Klavika";
+
+@font-face{
+    font-family: 'Work Sans';
     font-weight: 600;
+    font-stretch: normal;
     font-display: swap;
-    src: url("/fonts/klavika-bold-webfont.eot");
-    /* IE9 Compat Modes */
-    src: url("/fonts/klavika-bold-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/klavika-bold-webfont.woff2") format("woff2"), url("/fonts/klavika-bold-webfont.woff") format("woff"), url("/fonts/klavika-bold-webfont.ttf") format("truetype"), url("/fonts/klavika-bold-webfont.svg#webfontlHZXgLzL") format("svg");
-    /* Legacy iOS */
+    src: url('/fonts/work-sans-v16-latin-600.woff2') format('woff2');
+}
+
+@font-face{
+    font-family: 'Work Sans';
+    font-weight: 700;
+    font-style: normal;
+    font-stretch: normal;
+    font-display: swap;
+    src: url('/fonts/work-sans-v16-latin-700.woff2') format('woff2');
+}
+
+@font-face{
+    font-family: 'Work Sans';
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    font-display: swap;
+    src: url('/fonts/work-sans-v16-latin-900.woff2') format('woff2');
 }
 
 :root {
-  font-family: Klavika, Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Work Sans, Inter, Avenir, Helvetica, Arial, sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

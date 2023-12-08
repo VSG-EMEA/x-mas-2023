@@ -8,12 +8,12 @@ app.innerHTML = `
 <div class="game-wrapper relative text-white w-screen h-screen flex flex-col justify-center items-center">
     
     <div id="headline" class="absolute top-6 left:6 md:left-8 w-1/2 md:w-1/3 text-center md:text-left">
-        <h4 class="text-white text-xl md:text-2xl uppercase leading-none font-regular">Blitz Series</h4>
+        <h4 class="text-white text-default md:text-xl leading-none font-regular uppercase">2-Post lift - Legend Series</h4>
     </div>
     
-    <div class="absolute top-12 md:top-16 left-8 right-8 flex md:flex-row flex-col align-center justify-start">
-        <h1 id="title" class="text-4xl lg:text-4xl md:text-6xl uppercase leading-none font-bold text-center md:text-left text-red-400 w-full md:w-4/12" >Portal Lift</h1>      
-        <p id="current-score" class="text-white text-center text-4xl md:text-7xl uppercase leading-none font-medium w-full md:w-4/12"><span></span></p>
+    <div class="absolute top-12 md:top-12 left-8 right-8 flex md:flex-row flex-col align-center justify-start">
+        <h1 id="title" class="text-4xl lg:text-4xl md:text-7xl uppercase leading-none font-black text-center md:text-left text-white w-full md:w-4/12" >KPX55LIKTA</h1>      
+        <p id="current-score" class="text-white text-center text-4xl md:text-7xl uppercase leading-none font-black w-full md:w-4/12"><span></span></p>
     </div>
     
     <div id="scoreboard" class="absolute top-40 md:top-40 flex flex-col gap-0 text-center">
@@ -22,24 +22,24 @@ app.innerHTML = `
     
     <div id="game-item" class="absolute top-0 left-0 w-screen h-screen">
         <img id="game-background" 
-             src="img/portal-01.png.webp" 
-             srcset="img/portal-01-mobile.png.webp 640w, img/portal-01.png.webp 1024w"
+             src="img/lift-01.png.webp" 
+             srcset="img/lift-01-mobile.png.webp 640w, img/lift-01.png.webp 1024w"
              sizes="(max-width: 1024px) 640px, 1024px" 
              alt="" class="absolute top-0 left-0 w-full h-full object-cover" />  
         <img id="game-lift" 
-             src="img/portal-02.png.webp" 
-             srcset="img/portal-02-mobile.png.webp 640w, img/portal-02.png.webp 1024w"
+             src="img/lift-02.png.webp" 
+             srcset="img/lift-02-mobile.png.webp 640w, img/lift-02.png.webp 1024w"
              sizes="(max-width: 1024px) 640px, 1024px" 
              alt="" class="absolute top-0 left-0 w-full h-full object-cover"
              style="transform: translateY( calc(  var( --game-shift ) * -0.12vh  ) " />  
         <img id="game-front" 
-             src="img/portal-03.png.webp" 
-             srcset="img/portal-03-mobile.png.webp 640w, img/portal-03.png.webp 1024w"
+             src="img/lift-03.png.webp" 
+             srcset="img/lift-03-mobile.png.webp 640w, img/lift-03.png.webp 1024w"
              sizes="(max-width: 1024px) 640px, 1024px" 
              alt="" class="absolute top-0 left-0 w-full h-full object-cover" />   
     </div>
 
-    <div id="game-powerbar" class="absolute left-6 md:left-10 bottom-36 md:bottom-auto box-content bg-black bg-opacity-50 px-2 md:px-4 py-8 rounded-full border border-white overflow-hidden shadow-black shadow-xl">
+    <div id="game-powerbar" class="absolute left-6 md:left-10 bottom-36 md:bottom-auto box-content px-2 md:px-4 py-8 rounded-full border border-white overflow-hidden shadow-white shadow-xl">
         <div id="powerbar-wrapper" class="relative">
           <div id="powerbar-shadow" class="opacity-30"></div>
           <div id="powerbar-crop" class="absolute bottom-0 left-0 w-full overflow-hidden" style="height: var(--game-value) !important;">
@@ -51,11 +51,11 @@ app.innerHTML = `
     <div class="flex align-middle justify-between">
     
       <div id="action-buttons" class="absolute bottom-6 md:bottom-10 left-6 md:left-8 flex gap-4 items-center flex-start">
-        <button id="sound" class="bg-white bg-opacity-20 hover:bg-opacity-30 border border-white border-1-solid text-white font-medium text-base md:text-2xl uppercase h-12 md:h-16 px-4">
+        <button id="sound" class="bg-white bg-opacity-20 hover:bg-opacity-30 border-2 border-black border-opacity-30 border-1-solid h-12 md:h-16 px-4">
             <img src="img/sound.svg" class="h-6 md:h-8">
         </button>
         
-        <button id="reset" class="bg-white bg-opacity-20 hover:bg-opacity-30 border border-white border-1-solid text-white font-medium text-xl md:text-2xl uppercase h-12 md:h-16 px-4">
+        <button id="reset" class="bg-white bg-opacity-20 hover:bg-opacity-30 border-2 border-black border-opacity-30 border-1-solid text-blue-400 font-black text-xl md:text-2xl uppercase h-12 md:h-16 px-4">
           Reset
         </button>
         

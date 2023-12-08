@@ -21,7 +21,7 @@ export default defineConfig({
         description: 'The 2023 Christmas game',
         start_url: ".",
         display: "standalone",
-        theme_color: '#ef1439',
+        theme_color: '#004a83',
         background_color: "#232323",
         icons: [
           {

@@ -28,9 +28,9 @@ export class ClickGame {
     this.score = 0
     this.scoreEased = 0
     this.easedUpdateTime = 0
-    this.winScore = 60
+    this.winScore = 50
     this.difficulty = 5
-    this.depressurissation = 0.06
+    this.depressurissation = 0.05
     this.pointsPerClick = this.winScore / 25
     this.endTime = 0
 
