@@ -254,8 +254,8 @@ export class ClickGame {
     new Promise(function (resolve) {
       setTimeout(() => resolve(1), 100)
     }).then(function () {
-      const shift = Math.round(Math.random() * 150) + 100
-      clickedAnimation.style.transform = `translateY(-${shift}px) scale(1.5)`
+      const shift = Math.round(Math.random() * 200) + 100
+      clickedAnimation.style.transform = `translateY(-${shift}px) scale(2.5)`
       clickedAnimation.style.opacity = 0
       setTimeout(() => {
         clickedAnimation.remove()
@@ -337,6 +337,19 @@ export class ClickGame {
   }
 
   /**
+   * Calculates the ease out value based on the input time.
+   *
+   * @param {number} t - The time value between 0 and 1.
+   * @param {number} duration - The duration of the easing.
+   * @returns {number} - The calculated ease out value.
+   */
+  itemEaseOut (t, duration = 1) {
+    const scaledTime = t / duration;
+    return scaledTime * (2 - scaledTime)
+  }
+
+
+  /**
    * Updates and displays the score on the screen using easing.
    * The score is updated every 100 milliseconds.
    *
@@ -345,20 +358,24 @@ export class ClickGame {
    *
    * @return {void} This method does not return a value.
    */
-  drawScore () {
-    const currentTime = new Date().getTime()
-    const timeSinceLastUpdate = currentTime - this.easedUpdateTime
+  drawScore() {
+    const currentTime = new Date().getTime();
+    const timeDif = currentTime - this.easedUpdateTime;
 
-    // Update the eased score every 100 milliseconds
-    if (timeSinceLastUpdate > 20) {
-      this.easedUpdateTime = currentTime
-      const easingFactor = 0.2
+    // Update the score
+    if (timeDif > 100) {
+      this.easedUpdateTime = currentTime;
+      const maxDuration = 1000; // Adjust this value as needed
+      const percent = Math.min(timeDif / maxDuration, 1); // Clamp between 0 and 1
 
-      // Apply easing to smoothly update the eased score
-      this.scoreEased += (this.score - this.scoreEased) * easingFactor
+      // Use the easeOut function
+      const easingAmount = this.easeOut(percent);
+      this.scoreEased += (this.score - this.scoreEased) * easingAmount;
     }
 
-    this.scoreElement.textContent = this.roundToTwo(this.scoreEased).toFixed(2).padStart(5, '0') + ' TON' ?? '0 TON'
+    // Add padding to the score
+    const scoreVal = this.roundToTwo(this.scoreEased).toFixed(2);
+    this.scoreElement.textContent = scoreVal.padStart(5, '0') + ' TON' || '0 TON';
   }
 
   /**
@@ -435,7 +452,7 @@ export class ClickGame {
   /**
    * Updates the game state and renders the game on the canvas.
    *
-   * @return {boolean} Returns true if the game is over, false otherwise.
+   * @return {void} Returns true if the game is over, false otherwise.
    */
   game () {
     if (this.isGameActive) {
@@ -447,8 +464,6 @@ export class ClickGame {
     if (this.score >= this.winScore) {
       if (this.isGameActive) {
         this.winner()
-      } else {
-        return true
       }
     } else if (this.score <= 0) {
       if (!this.isGameActive) this.reset()

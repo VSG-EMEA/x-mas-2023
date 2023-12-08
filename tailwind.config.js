@@ -9,11 +9,11 @@ export default {
       xl: '1.25rem',
       '2xl': '1.9rem',
       '3xl': '2.5rem',
-      '4xl': ['3rem', '3rem'],
-      '5xl': '3.5rem',
-      '6xl': ['5rem', '1'],
-      '7xl': ['5.5rem', '1'],
-      '8xl': ['7rem', '1']
+      '4xl': ['clamp(2.5rem, 5vw, 4rem)', '3rem'],
+      '5xl': ['clamp(3rem, 5vw, 4.5rem)', '1'],
+      '6xl': ['clamp(4rem, 5vw, 5rem)', '1'],
+      '7xl': ['clamp(4rem, 5vw, 5.5rem)', '1'],
+      '8xl': ['clamp(5rem, 5vw, 6.5rem)', '1']
     },
     colors: {
       transparent: 'transparent',

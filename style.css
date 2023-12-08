@@ -105,6 +105,7 @@
 #powerbar,
 #powerbar-shadow {
     height: 500px;
+    max-height: calc(100vh - 400px);
     width: 30px;
     background: url('/img/powerbar.svg') no-repeat bottom center;
     background-size: cover;
