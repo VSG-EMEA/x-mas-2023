@@ -9,6 +9,7 @@ export default defineConfig({
   },
   plugins: [
     VitePWA({
+      injectRegister: 'auto',
       registerType: 'autoUpdate',
       workbox: {
         globPatterns: ['**/*.{js,css,html,mp3,jpg,png,webp,svg}']
@@ -18,7 +19,10 @@ export default defineConfig({
         name: 'XMAS Game 2023',
         short_name: 'xmas-game',
         description: 'The 2023 Christmas game',
-        theme_color: '#ffffff',
+        start_url: ".",
+        display: "standalone",
+        theme_color: '#ef1439',
+        background_color: "#232323",
         icons: [
           {
             src: 'pwa-192x192.png',
