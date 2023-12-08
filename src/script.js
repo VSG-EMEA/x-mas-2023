@@ -403,6 +403,10 @@ export class ClickGame {
     this.scoreElement.textContent = scoreVal.padStart(5, '0') + ' TON' || '0 TON';
   }
 
+  decreaseScore() {
+    this.score -= this.depressurissation
+  }
+
   /**
    * Sets the score value and updates the game display.
    *
@@ -410,6 +414,9 @@ export class ClickGame {
    * @return {void}
    */
   setScore (value) {
+
+    this.decreaseScore()
+
     const valuePercentile = Math.round(value / this.winScore * 100)
     const easedValuePercentile = this.easeOut(valuePercentile / 100) // Apply easing
     this.scoreEased = easedValuePercentile * this.winScore
@@ -495,7 +502,6 @@ export class ClickGame {
       this.startTime = new Date().getTime()
     } else {
       this.message.innerHTML = ''
-      this.score -= this.depressurissation
       this.setScore(this.score)
     }
   }
