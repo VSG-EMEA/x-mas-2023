@@ -36,7 +36,7 @@ export class ClickGame {
 
     // sound settings
     this.soundOn = false
-    this.sound = new Audio('./sounds/christmas-rock.mp3')
+    this.sound = new Audio('./sounds/that-christmas.mp3')
 
     this.acceleration = 0.2
 
