@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "optimize-images": "squashify -i ./src/img -o ./public/img",
+    "optimize-images": "squashify --config .squash",
     "deploy": "gh-pages -d dist",
     "preview": "vite preview"
   },

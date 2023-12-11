@@ -45,7 +45,7 @@ export class ClickGame {
     this.floorPos = window.innerHeight
 
     // screen orientation
-    this.orientation = this.isMobile() ? 'portrait' : 'landscape';
+    this.orientation = this.isMobile() ? 'portrait' : 'landscape'
 
     // the container element
     this.container = containerClass
@@ -87,7 +87,6 @@ export class ClickGame {
      */
     this.canvas.addEventListener('click', this.clickHandler.bind(this), false)
 
-
     /**
      * The difficulty and score settings for mobiles are different
      */
@@ -114,9 +113,8 @@ export class ClickGame {
      */
     window.addEventListener('resize', () => {
       // Update the orientation property when the window size changes
-      this.orientation = this.isMobile() ? 'portrait' : 'landscape';
-    });
-
+      this.orientation = this.isMobile() ? 'portrait' : 'landscape'
+    })
   }
 
   // Add user interaction listener
@@ -202,14 +200,13 @@ export class ClickGame {
     this.reset()
   }
 
-
   /**
    * Method to check if device is mobile or in portrait mode
    *
    * @return {boolean} - True if device is mobile or in portrait mode, false otherwise.
    */
-  isMobile() {
-    return window.matchMedia("(max-width: 768px)").matches || window.innerHeight > window.innerWidth;
+  isMobile () {
+    return window.matchMedia('(max-width: 768px)').matches || window.innerHeight > window.innerWidth
   }
 
   /**
@@ -370,7 +367,6 @@ export class ClickGame {
     animate()
   }
 
-
   /**
    * Updates and displays the score on the screen using easing.
    * The score is updated every 100 milliseconds.
@@ -380,30 +376,30 @@ export class ClickGame {
    *
    * @return {void} This method does not return a value.
    */
-  drawScore() {
-    const currentTime = new Date().getTime();
-    const timeDif = currentTime - this.easedUpdateTime;
+  drawScore () {
+    const currentTime = new Date().getTime()
+    const timeDif = currentTime - this.easedUpdateTime
 
     // Update the score
     if (timeDif > 20) {
-      this.easedUpdateTime = currentTime;
-      const maxDuration = 100;
-      const percent = Math.min(timeDif / maxDuration, 1); // Clamp between 0 and 1
+      this.easedUpdateTime = currentTime
+      const maxDuration = 100
+      const percent = Math.min(timeDif / maxDuration, 1) // Clamp between 0 and 1
 
       // Use the easeOut function
-      const easingAmount = this.easeOut(percent);
-      this.scoreEased += (this.score - this.scoreEased) * easingAmount;
+      const easingAmount = this.easeOut(percent)
+      this.scoreEased += (this.score - this.scoreEased) * easingAmount
       if (this.scoreEased < 0) {
         this.scoreEased = 0
       }
     }
 
     // Add padding to the score
-    const scoreVal = this.roundToTwo(this.scoreEased).toFixed(2);
-    this.scoreElement.textContent = scoreVal.padStart(5, '0') + ' TON' || '0 TON';
+    const scoreVal = this.roundToTwo(this.scoreEased).toFixed(2)
+    this.scoreElement.textContent = scoreVal.padStart(5, '0') + ' TON' || '0 TON'
   }
 
-  decreaseScore() {
+  decreaseScore () {
     this.score -= this.depressurissation
   }
 
@@ -414,7 +410,6 @@ export class ClickGame {
    * @return {void}
    */
   setScore (value) {
-
     this.decreaseScore()
 
     const valuePercentile = Math.round(value / this.winScore * 100)
@@ -422,7 +417,7 @@ export class ClickGame {
     this.scoreEased = easedValuePercentile * this.winScore
 
     root.style.setProperty('--game-value', String(easedValuePercentile * 100) + '%')
-    root.style.setProperty('--game-shift', String(easedValuePercentile * 100) )
+    root.style.setProperty('--game-shift', String(easedValuePercentile * 100))
   }
 
   /**
