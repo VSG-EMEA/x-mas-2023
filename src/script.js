@@ -28,10 +28,10 @@ export class ClickGame {
     this.score = 0
     this.scoreEased = 0
     this.easedUpdateTime = 0
-    this.winScore = 50
+    this.winScore = 5.5
     this.difficulty = 5
-    this.depressurissation = 0.05
-    this.pointsPerClick = this.winScore / 25
+    this.depressurissation = 0.005
+    this.pointsPerClick = this.winScore / 20
     this.endTime = 0
 
     // sound settings
