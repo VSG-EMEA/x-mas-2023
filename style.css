@@ -6,38 +6,26 @@
     font-family: "Klavika";
     font-weight: 300;
     font-display: swap;
-    src: url("/fonts/klavika-light-webfont.eot");
-    /* IE9 Compat Modes */
-    src: url("/fonts/klavika-light-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/klavika-light-webfont.woff2") format("woff2"), url("/fonts/klavika-light-webfont.woff") format("woff"), url("/fonts/klavika-light-webfont.ttf") format("truetype"), url("/fonts/klavika-light-webfont.svg#webfonttAPybYCL") format("svg");
-    /* Legacy iOS */
+    src: url("/fonts/klavika-light-webfont.woff2") format("woff2");
 }
 @font-face {
     font-family: "Klavika";
     font-weight: 400;
     font-style: normal;
     font-display: swap;
-    src: url("/fonts/klavika-regular-webfont.eot");
-    /* IE9 Compat Modes */
-    src: url("/fonts/klavika-regular-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/klavika-regular-webfont.woff2") format("woff2"), url("/fonts/klavika-regular-webfont.woff") format("woff"), url("/fonts/klavika-regular-webfont.ttf") format("truetype"), url("/fonts/klavika-regular-webfont.svg#webfontXNPpGbOu") format("svg");
-    /* Legacy iOS */
+    src:url("/fonts/klavika-regular-webfont.woff2") format("woff2");
 }
 @font-face {
     font-family: "Klavika";
     font-weight: 500;
     font-display: swap;
-    src: url("/fonts/klavika-medium-webfont.eot");
-    /* IE9 Compat Modes */
-    src: url("/fonts/klavika-medium-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/klavika-medium-webfont.woff2") format("woff2"), url("/fonts/klavika-medium-webfont.woff") format("woff"), url("/fonts/klavika-medium-webfont.ttf") format("truetype"), url("/fonts/klavika-medium-webfont.svg#webfonttAPybYCL") format("svg");
-    /* Legacy iOS */
+    src:url("/fonts/klavika-medium-webfont.woff2") format("woff2");
 }
 @font-face {
     font-family: "Klavika";
     font-weight: 600;
     font-display: swap;
-    src: url("/fonts/klavika-bold-webfont.eot");
-    /* IE9 Compat Modes */
-    src: url("/fonts/klavika-bold-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/klavika-bold-webfont.woff2") format("woff2"), url("/fonts/klavika-bold-webfont.woff") format("woff"), url("/fonts/klavika-bold-webfont.ttf") format("truetype"), url("/fonts/klavika-bold-webfont.svg#webfontlHZXgLzL") format("svg");
-    /* Legacy iOS */
+    src:url("/fonts/klavika-bold-webfont.woff2") format("woff2");
 }
 
 :root {
