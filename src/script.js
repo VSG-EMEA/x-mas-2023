@@ -114,7 +114,9 @@ export class ClickGame {
     window.addEventListener('resize', () => {
       // Update the orientation property when the window size changes
       this.orientation = this.isMobile() ? 'portrait' : 'landscape'
+      this.setImageSource(this.orientation)
     })
+    this.setImageSource(this.orientation)
   }
 
   // Add user interaction listener
@@ -198,6 +200,30 @@ export class ClickGame {
   setPointsPerClick () {
     this.pointsPerClick = Number(this.scoreRange.value)
     this.reset()
+  }
+
+  /**
+   * Changes the source of all images on the page based on the passed orientation.
+   * It fetches the new source from the corresponding data attribute of each image.
+   *
+   * @param {string} orientation - The orientation of the image source to use
+   */
+  setImageSource (orientation) {
+    // Get all images on the page
+    const images = document.getElementsByTagName('img')
+
+    // Loop through each image
+    for (let i = 0; i < images.length; i++) {
+      const img = images[i]
+
+      // Get the data attribute for the passed orientation
+      const newSrc = img.getAttribute(`data-${orientation}-src`)
+
+      // If the newSrc is not null, set it as the image's src
+      if (newSrc) {
+        img.src = newSrc
+      }
+    }
   }
 
   /**
