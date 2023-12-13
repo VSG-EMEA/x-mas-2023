@@ -14,12 +14,12 @@ app.innerHTML = `
         <h4 class="text-white text-default md:text-xl leading-none font-regular uppercase">2-Post lift - Legend Series</h4>
     </div>
     
-    <div class="absolute top-12 md:top-12 left-8 right-8 flex md:flex-row flex-col align-center justify-start">
+    <div class="absolute top-12 md:top-12 left-8 right-8 md:right-12 flex md:flex-row flex-col align-center justify-between">
         <h1 id="title" class="text-4xl lg:text-4xl md:text-7xl uppercase leading-none font-black text-center md:text-left text-white w-full md:w-4/12" >KPX55LIKTA</h1>      
-        <p id="current-score" class="text-white text-center text-4xl md:text-7xl uppercase leading-none font-black w-full md:w-4/12"><span></span></p>
+        <p id="current-score" class="text-white text-center md:text-right text-5xl md:text-7xl uppercase leading-none font-black w-full md:w-4/12"><span></span></p>
     </div>
     
-    <div id="scoreboard" class="absolute top-40 md:top-40 flex flex-col gap-0 text-center">
+    <div id="scoreboard" class="absolute top-36 md:top-40 flex flex-col gap-0 text-center md:text-right w-full md:w-full right-0 md:right-12">
         <p id="message" class="text-white text-2xl md:text-3xl leading-none font-light">Click the Pit Lift to <b >Start</b></p>
     </div>
     
@@ -36,7 +36,7 @@ app.innerHTML = `
              data-portrait-src="img/lift-02-mobile.png.webp"
              sizes="(max-width: 1024px) 640px, 1024px" 
              alt="" class="absolute top-0 left-0 w-full h-full object-cover"
-             style="transform: translateY( calc(  var( --game-shift ) * -0.12vh  ) " />  
+             style="transform: translateY( calc(  var( --game-shift ) * -0.25vh  ) " />  
         <img id="game-front" 
              src="img/lift-03.png.webp" 
              data-landscape-src="img/lift-03.png.webp"
