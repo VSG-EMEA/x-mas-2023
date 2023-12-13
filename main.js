@@ -20,7 +20,7 @@ app.innerHTML = `
     </div>
     
     <div id="scoreboard" class="absolute top-36 md:top-40 flex flex-col gap-0 text-center md:text-right w-full md:w-full right-0 md:right-12">
-        <p id="message" class="text-white text-2xl md:text-3xl leading-none font-light">Click the Pit Lift to <b >Start</b></p>
+        <p id="message" class="text-white text-2xl md:text-3xl leading-none font-light">Click the Lift to <b >Start</b></p>
     </div>
     
     <div id="game-item" class="absolute top-0 left-0 w-screen h-screen">
