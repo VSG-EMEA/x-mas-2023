@@ -14,9 +14,9 @@ app.innerHTML = `
         <h4 class="text-white text-default md:text-xl leading-none font-regular uppercase">2-Post lift - Legend Series</h4>
     </div>
     
-    <div class="absolute top-12 md:top-12 left-8 right-8 md:right-12 flex md:flex-row flex-col align-center justify-between z-10">
+    <div class="absolute top-12 md:top-12 left-6 right-6 md:right-12 flex md:flex-row flex-col align-center justify-between z-10">
         <h1 id="title" class="text-4xl lg:text-4xl md:text-7xl uppercase leading-none font-black text-center md:text-left text-white w-full md:w-4/12" >KPX55LIKTA</h1>      
-        <p id="current-score" class="text-white text-center md:text-right text-5xl md:text-7xl uppercase leading-none font-black w-full md:w-4/12"><span></span></p>
+        <p id="current-score" class="text-white text-center md:text-right text-4xl md:text-7xl uppercase leading-none font-black w-full md:w-4/12"><span></span></p>
     </div>
     
     <div id="scoreboard" class="absolute top-36 md:top-40 flex flex-col gap-0 text-center md:text-right w-full md:w-full right-0 md:right-12 z-10">
@@ -54,7 +54,7 @@ app.innerHTML = `
         </div>
     </div>
 
-    <div class="flex align-middle justify-between">
+    <div class="flex content-center justify-middle">
     
       <div id="action-buttons" class="absolute bottom-6 md:bottom-10 left-6 md:left-8 flex gap-4 items-center flex-start">
         <button id="sound" class="bg-white bg-opacity-20 hover:bg-opacity-30 border-2 border-black border-opacity-30 border-1-solid h-12 md:h-16 px-4">
@@ -76,8 +76,8 @@ app.innerHTML = `
         </p>
       </div>
         
-      <div id="logo" class="absolute bottom-6 md:bottom-10 right-6 md:right-8">
-        <img src="img/logo.png.webp" alt="" class="w-24 md:w-44 float-right">
+      <div id="logo" class="absolute bottom-6 bottom-9 md:bottom-10 right-6 md:right-8 w-24 md:w-44">
+        <img src="img/logo.png.webp" alt="" class="float-right ">
       </div>
       
   </div>
