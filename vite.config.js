@@ -14,41 +14,41 @@ export default defineConfig({
       workbox: {
         globPatterns: ['**/*.{js,css,html,mp3,jpg,png,webp,svg}']
       },
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'safari-pinned-tab.svg'],
+      includeAssets: ['favicon.ico', 'apple-touch-icon.png'],
       manifest: {
         name: 'Ravaglioli Christmas Game 2023',
         short_name: 'RAV Game 2023',
+        start_url: '.',
+        display: 'standalone',
+        background_color: '#FFFFFF',
+        theme_color: '#FFFFFF',
+        description: 'Explore the magical Christmas world of Ravaglioli Xmas 2023! Explore the magical Christmas world of Ravaglioli Xmas 2023! Click to start the challenge with KPX55LIKTA.',
         icons: [
           {
-            src: '/pwa-192x192.png',
+            src: 'pwa-192x192.png',
             sizes: '192x192',
             type: 'image/png',
             purpose: 'any'
           },
           {
-            src: '/pwa-512x512.png',
+            src: 'pwa-512x512.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'any'
           },
           {
-            src: '/pwa-maskable-192x192.png',
+            src: 'pwa-maskable-192x192.png',
             sizes: '192x192',
             type: 'image/png',
             purpose: 'maskable'
           },
           {
-            src: '/pwa-maskable-512x512.png',
+            src: 'pwa-maskable-512x512.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'maskable'
           }
-        ],
-        start_url: '/',
-        display: 'standalone',
-        background_color: '#FFFFFF',
-        theme_color: '#FFFFFF',
-        description: 'Explore the magical Christmas world of Ravaglioli Xmas 2023! Explore the magical Christmas world of Ravaglioli Xmas 2023! Click to start the challenge with KPX55LIKTA.'
+        ]
       }
     })
   ]
