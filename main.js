@@ -26,14 +26,14 @@ app.innerHTML = `
     <div id="game-item" class="absolute top-0 left-0 w-screen h-screen">
         <img id="game-background" 
              src="img/portal-01.png.webp" 
-             data-landscape-src="img/portal-03.png.webp"
-             data-portrait-src="img/portal-03-mobile.png.webp"
+             data-landscape-src="img/portal-01.png.webp"
+             data-portrait-src="img/portal-01-mobile.png.webp"
              sizes="(max-width: 1024px) 640px, 1024px" 
              alt="" class="absolute top-0 left-0 w-full h-full object-cover" />  
         <img id="game-lift" 
              src="img/portal-02.png.webp" 
-             data-landscape-src="img/portal-03.png.webp"
-             data-portrait-src="img/portal-03-mobile.png.webp"
+             data-landscape-src="img/portal-02.png.webp"
+             data-portrait-src="img/portal-02-mobile.png.webp"
              sizes="(max-width: 1024px) 640px, 1024px" 
              alt="" class="absolute top-0 left-0 w-full h-full object-cover"
              style="transform: translateY( calc(  var( --game-shift ) * -0.12vh  ) " />  
