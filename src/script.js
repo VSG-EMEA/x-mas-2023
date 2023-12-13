@@ -492,11 +492,10 @@ export class ClickGame {
     this.vibratePhone()
 
     const timeFactor = 10000 - timeElapsed
-    const clickFactor = 1000 * this.click
     const difficultyFactor = 1000 / parseFloat(this.difficulty)
     const scoreValueFactor = 100000 / parseFloat(this.pointsPerClick)
 
-    const overallScore = Math.floor((timeFactor + clickFactor + difficultyFactor + scoreValueFactor) / 4)
+    const overallScore = Math.floor((timeFactor + difficultyFactor + scoreValueFactor) / 4)
 
     this.scoreElement.textContent = this.winScore + ' TON - WIN!'
     this.message.innerHTML = `<b>Score:</b> ${overallScore}`
