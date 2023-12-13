@@ -106,7 +106,7 @@ export class ClickGame {
     this.soundButton.addEventListener('click', this.controlAudio.bind(this))
 
     document.body.addEventListener('click', this.userInteractionHandler)
-    document.body.addEventListener('touchstart', this.userInteractionHandler)
+    document.body.addEventListener('touchend', this.userInteractionHandler)
 
     /**
      * set the orientation property based on the window size
@@ -120,10 +120,10 @@ export class ClickGame {
   }
 
   // Add user interaction listener
-  userInteractionHandler = async () => {
-    await this.startAudio(true)
+  userInteractionHandler = () => {
+    this.startAudio()
     document.body.removeEventListener('click', this.userInteractionHandler)
-    document.body.removeEventListener('touchstart', this.userInteractionHandler)
+    document.body.removeEventListener('touchend', this.userInteractionHandler)
   }
 
   /**
@@ -155,6 +155,9 @@ export class ClickGame {
   startAudio () {
     this.sound.play().then(() => {
       this.soundButton.classList.remove('sound-off')
+    }).catch((err) => {
+      this.soundOn = false
+      console.log(err)
     })
   }
 
@@ -457,6 +460,9 @@ export class ClickGame {
       // If the game is not active, reset and start a new game
       this.reset()
       this.startTime = new Date().getTime()
+      if (!this.soundOn) {
+        this.controlAudio()
+      }
       this.isGameActive = true
     } else {
       if (this.score !== this.winScore && this.isGameActive) {
