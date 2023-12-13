@@ -8,7 +8,7 @@ new MobileHeightFix().init()
 const app = document.querySelector('#app')
 
 app.innerHTML = `
-<div class="game-wrapper relative text-white w-screen h-screen flex flex-col justify-center items-center">
+<div class="game-wrapper relative text-white w-screen h-full flex flex-col justify-center items-center">
     
     <div id="headline" class="absolute top-6 left:6 md:left-8 w-1/2 md:w-1/3 text-center md:text-left">
         <h4 class="text-white text-xl md:text-2xl uppercase leading-none font-regular">Blitz Series</h4>
@@ -36,7 +36,7 @@ app.innerHTML = `
              data-portrait-src="img/portal-02-mobile.png.webp"
              sizes="(max-width: 1024px) 640px, 1024px" 
              alt="" class="absolute top-0 left-0 w-full h-full object-cover"
-             style="transform: translateY( calc(  var( --game-shift ) * -0.12vh  ) " />  
+             style="transform: translateY( calc(  var( --game-shift ) * -0.10vh  ) " />  
         <img id="game-front" 
              src="img/portal-03.png.webp" 
              data-landscape-src="img/portal-03.png.webp"
