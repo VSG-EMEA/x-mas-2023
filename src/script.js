@@ -490,6 +490,9 @@ export class ClickGame {
    * @returns {void}
    */
   winner () {
+    // Use the vibration API to vibrate the phone for 0.1 seconds if supported
+    this.vibratePhone()
+
     this.isGameActive = false // Pause the game
     this.endTime = new Date().getTime()
 
@@ -498,9 +501,6 @@ export class ClickGame {
     if (timeElapsed > 10000) {
       timeElapsed = 10000
     }
-
-    // Use the vibration API to vibrate the phone for 0.1 seconds if supported
-    this.vibratePhone()
 
     const timeFactor = 10000 - timeElapsed
     const difficultyFactor = 1000 / parseFloat(this.difficulty)
