@@ -3129,6 +3129,11 @@ mkdirp-classic@^0.5.2, mkdirp-classic@^0.5.3:
   resolved "https://registry.npmjs.org/mkdirp-classic/-/mkdirp-classic-0.5.3.tgz"
   integrity sha512-gKLcREMhtuZRwRAfqP3RFW+TK4JqApVBtOIftVgjuABpAtpxhPGaDcfvbhNvD0B8iD1oUr/txX35NjcaY6Ns/A==
 
+mobile-height-fix@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/mobile-height-fix/-/mobile-height-fix-1.0.1.tgz#aa5523a1b6e9c533cb23f3167907a2e3202f4e3a"
+  integrity sha512-z5lxLIzTDXmESV26lelMZKB6iMzCp/RAhBvgJsaSKDDyRXEUGl6+XNQIRUZnyWGziGJir67dRQtWlyrgREH+fQ==
+
 ms@2.1.2:
   version "2.1.2"
   resolved "https://registry.npmjs.org/ms/-/ms-2.1.2.tgz"
