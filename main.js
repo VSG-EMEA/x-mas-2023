@@ -1,7 +1,7 @@
 import './style.css'
 
 import { ClickGame } from './src/script.js'
-import MobileHeightFix from './src/mobile-height-fix.js'
+import MobileHeightFix from 'mobile-height-fix'
 
 new MobileHeightFix().init()
 
