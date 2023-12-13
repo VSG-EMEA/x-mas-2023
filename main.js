@@ -10,16 +10,16 @@ const app = document.querySelector('#app')
 app.innerHTML = `
 <div class="game-wrapper relative text-white w-screen h-screen flex flex-col justify-center items-center">
     
-    <div id="headline" class="absolute top-6 left:6 md:left-8 w-1/2 md:w-1/3 text-center md:text-left">
+    <div id="headline" class="absolute top-6 left:0 md:left-8 w-1/2 w-full md:w-1/3 text-center md:text-left z-10">
         <h4 class="text-white text-default md:text-xl leading-none font-regular uppercase">2-Post lift - Legend Series</h4>
     </div>
     
-    <div class="absolute top-12 md:top-12 left-8 right-8 md:right-12 flex md:flex-row flex-col align-center justify-between">
+    <div class="absolute top-12 md:top-12 left-8 right-8 md:right-12 flex md:flex-row flex-col align-center justify-between z-10">
         <h1 id="title" class="text-4xl lg:text-4xl md:text-7xl uppercase leading-none font-black text-center md:text-left text-white w-full md:w-4/12" >KPX55LIKTA</h1>      
         <p id="current-score" class="text-white text-center md:text-right text-5xl md:text-7xl uppercase leading-none font-black w-full md:w-4/12"><span></span></p>
     </div>
     
-    <div id="scoreboard" class="absolute top-36 md:top-40 flex flex-col gap-0 text-center md:text-right w-full md:w-full right-0 md:right-12">
+    <div id="scoreboard" class="absolute top-36 md:top-40 flex flex-col gap-0 text-center md:text-right w-full md:w-full right-0 md:right-12 z-10">
         <p id="message" class="text-white text-2xl md:text-3xl leading-none font-light">Click the Lift to <b >Start</b></p>
     </div>
     
