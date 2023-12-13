@@ -1,6 +1,9 @@
 import './style.css'
 
 import { ClickGame } from './src/script.js'
+import MobileHeightFix from './src/mobile-height-fix.js'
+
+new MobileHeightFix().init()
 
 const app = document.querySelector('#app')
 
