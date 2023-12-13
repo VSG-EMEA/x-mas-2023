@@ -8,7 +8,7 @@ new MobileHeightFix().init()
 const app = document.querySelector('#app')
 
 app.innerHTML = `
-<div class="game-wrapper relative text-white w-screen h-screen flex flex-col justify-center items-center">
+<div class="game-wrapper relative text-white w-screen h-full flex flex-col justify-center items-center">
     
     <div id="headline" class="absolute top-6 left:0 md:left-8 w-1/2 w-full md:w-1/3 text-center md:text-left z-10">
         <h4 class="text-white text-default md:text-xl leading-none font-regular uppercase">2-Post lift - Legend Series</h4>
