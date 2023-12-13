@@ -491,7 +491,7 @@ export class ClickGame {
     // use the vibration API to vibrate the phone for 0.1 seconds if supported
     this.vibratePhone()
 
-    const timeFactor = 10000 - timeElapsed
+    const timeFactor = 10000 - timeElapsed * 10
     const difficultyFactor = 1000 / parseFloat(this.difficulty)
     const scoreValueFactor = 100000 / parseFloat(this.pointsPerClick)
 
