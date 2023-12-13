@@ -91,7 +91,7 @@ export class ClickGame {
      * The difficulty and score settings for mobiles are different
      */
     if (this.isMobile()) {
-      this.pointsPerClick = this.winScore / 30
+      this.pointsPerClick = this.winScore / 24
     }
 
     /**
