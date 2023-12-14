@@ -492,12 +492,17 @@ export class ClickGame {
   winner () {
     this.isGameActive = false // Pause the game
     this.endTime = new Date().getTime()
-    const timeElapsed = this.endTime - this.startTime // Convert to seconds
 
-    // use the vibration API to vibrate the phone for 0.1 seconds if supported
+    // Calculate the overall score for the time elapsed forcing a positive value when the score is negative
+    let timeElapsed = (this.endTime - this.startTime) * 10 // Convert to seconds
+    if (timeElapsed > 10000) {
+      timeElapsed = 10000
+    }
+
+    // Use the vibration API to vibrate the phone for 0.1 seconds if supported
     this.vibratePhone()
 
-    const timeFactor = 10000 - timeElapsed * 10
+    const timeFactor = 10000 - timeElapsed
     const difficultyFactor = 1000 / parseFloat(this.difficulty)
     const scoreValueFactor = 100000 / parseFloat(this.pointsPerClick)
 
