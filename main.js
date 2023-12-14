@@ -36,7 +36,7 @@ app.innerHTML = `
              data-portrait-src="img/lift-02-mobile.png.webp"
              sizes="(max-width: 1024px) 640px, 1024px" 
              alt="" class="absolute top-0 left-0 w-full h-full object-cover"
-             style="transform: translateY( calc(  var( --game-shift ) * -0.20vh  ) " />  
+             style="transform: translateY( calc(  var( --game-shift ) * -0.18vh  ) " />  
         <img id="game-front" 
              src="img/lift-03.png.webp" 
              data-landscape-src="img/lift-03.png.webp"
