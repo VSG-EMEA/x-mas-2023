@@ -494,7 +494,7 @@ export class ClickGame {
     this.endTime = new Date().getTime()
 
     // Calculate the overall score for the time elapsed forcing a positive value when the score is negative
-    let timeElapsed = (this.endTime - this.startTime) * 10 // Convert to seconds
+    let timeElapsed = (this.endTime - this.startTime) * 10 // Convert to seconds and multiply by 10
     if (timeElapsed > 10000) {
       timeElapsed = 10000
     }
